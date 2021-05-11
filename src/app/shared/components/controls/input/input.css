@@ -1,0 +1,20 @@
+.field {
+    height: 100%;
+    border: 0.1px solid darkgray;
+    font-size: 1rem;
+    padding-left: 14px;
+}
+
+.icon {
+    padding-block: 0.8rem;
+    text-align: center;
+    width: 3rem;
+    color: white;
+    background-color: black;
+    font-size: 1rem;
+}
+
+.d-flex.flex-column {
+    padding-bottom: 1.25rem;
+    padding-inline: 0.5rem;
+}
