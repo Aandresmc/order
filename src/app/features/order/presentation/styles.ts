@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   height: 50%;
   justify-content: space-evenly;
-  margin: 1rem;
+  margin: 1rem; 
 `;
 
 export const BgGray = styled.div`
@@ -23,15 +23,8 @@ export const BgBlack = styled.div`
 `;
 
 export const Card = styled.div`
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
   min-width: 0;
+  max-width: fit-content;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;

@@ -23,16 +23,23 @@ export const FormOrderComponent: React.FC<Props> = ({
 }: Props) => {
   return (
     <Card style={{ marginBlock: "1rem" }}>
-      <span
+      <div
+        className="d-flex"
         style={{
-          fontWeight: "bolder",
           paddingBlock: "1rem",
           paddingInline: "1.5rem",
           borderBottomStyle: "groove",
         }}
       >
-        DIRECCIÓN DE ENVIO
-      </span>
+        <span
+          style={{
+            fontWeight: "bolder",
+          }}
+        >
+          DIRECCIÓN DE ENVIO
+        </span>
+      </div>
+
       <Container>
         <div className="d-flex">
           <div className="flex-column">
@@ -66,7 +73,7 @@ export const FormOrderComponent: React.FC<Props> = ({
             />
             <InputComponent
               label="Estado/Región"
-              name="estado"
+              name="region"
               icon="fas fa-map-marker-alt"
               onChange={setValueField}
               type="text"
@@ -75,7 +82,7 @@ export const FormOrderComponent: React.FC<Props> = ({
             />
             <InputComponent
               label="Delegación o municipio"
-              name="estado"
+              name="municipio"
               icon="fas fa-map-marker-alt"
               onChange={setValueField}
               type="text"
@@ -139,6 +146,7 @@ export const FormOrderComponent: React.FC<Props> = ({
 
         <div className="flex-wrap">
           <ButtonSubmitComponent
+            type="button"
             isLoading={isLoading}
             label="Libreta de direcciones"
           />
@@ -146,9 +154,9 @@ export const FormOrderComponent: React.FC<Props> = ({
         </div>
 
         <CheckBoxComponent
-          name="esDireccionFacturacion"
+          name="nombre"
           label="Utilizar como dirección de facturación"
-          isChecked={orden.esDireccionFacturacion}
+          isChecked={false}
           onChange={setValueField}
         />
       </Container>

@@ -5,21 +5,25 @@ import { container } from "app/app.container";
 
 import { UseCase } from "app/core/use_case";
 
-// import { ILogin } from '../domain/entities/ilogin';
+import { IOrden } from "../domain/entities/iorder";
 
 const Router: React.FC<RouteProps> = (props: RouteProps) => {
   const OrderPage = lazy(() => import("app/features/order/presentation"));
 
-  // const authUseCase: UseCase<ILogin.Params, ILogin.Response> = container.get('AuthenticationUseCase');
+  const getProductsUseCase: UseCase<null, IOrden.Producto[]> =
+    container.get("GetProductsUseCase");
+
+  const orderUseCase: UseCase<IOrden.Params, boolean> =
+    container.get("OrderUseCase");
 
   return (
     <Route
       {...props}
       path="/pedido"
       exact
-      render={(props) => <OrderPage />}
-
-      // render={props => (<OrderPage {...props} authUseCase={authUseCase} />)}
+      render={(props) => (
+        <OrderPage {...props} getProductsUseCase={getProductsUseCase} orderUseCase={orderUseCase} />
+      )}
     />
   );
 };

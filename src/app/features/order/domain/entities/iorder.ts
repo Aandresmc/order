@@ -3,6 +3,7 @@ export namespace IOrden {
     datosEnvio: DatosEnvio;
     productos: Producto[];
     orden: {
+      esDireccionFacturacion?: boolean;
       subTotal: number;
       costoEnvio: number | null;
       Total: number;
@@ -24,12 +25,11 @@ export namespace IOrden {
     colonia: string;
     ciudad: string;
     calle: string;
-    esDireccionFacturacion: boolean;
   }
 
   export interface Producto {
-    nombre: string;
-    precio: string;
-    imagen: string;
+    image: string;
+    name: string;
+    price: string;
   }
 }

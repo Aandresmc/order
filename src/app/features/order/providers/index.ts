@@ -5,31 +5,42 @@ import { HttpClient } from "app/core/http/http-client";
 
 import { UseCase } from "app/core/use_case";
 
-// import { ILoginRepository } from "../domain/repositories/ilogin_repository";
-// import { LoginRepository } from "../data/repositories/login_repository";
+import { IOrdenRepository } from "../domain/repositories/iorder_repository";
 
-// import { ILogin } from "../domain/entities/ilogin";
-// import { AuthenticationUseCase } from "../domain/usecases/login_usecase";
+import { IOrden } from "../domain/entities/iorder";
+import { GetProductsUseCase } from "../domain/usecases/iproducts_usecase";
+import { OrdenRepository } from "../data/repositories/order_repository";
+import { OrderUseCase } from "../domain/usecases/iorder_usecase";
 
 const providers = (): AsyncContainerModule => {
   const module = new AsyncContainerModule(async (bind: interfaces.Bind) => {
     // //repository
-    // bind<ILoginRepository>("ILoginRepository").toDynamicValue((context) => {
-    //   return new LoginRepository(
-    //     enviroments.security,
-    //     context.container.get<HttpClient>("HttpClient")
-    //   );
-    // });
+    bind<IOrdenRepository>("IOrdenRepository").toDynamicValue((context) => {
+      return new OrdenRepository(
+        enviroments.products,
+        context.container.get<HttpClient>("HttpClient")
+      );
+    });
 
-    // //usecases
+    //usecases
 
-    // bind<UseCase<ILogin.Params, ILogin.Response>>(
-    //   "AuthenticationUseCase"
-    // ).toDynamicValue((context) => {
-    //   return new AuthenticationUseCase(
-    //     context.container.get<ILoginRepository>("ILoginRepository")
-    //   );
-    // });
+    //getProducts
+    bind<UseCase<null, IOrden.Producto[]>>("GetProductsUseCase").toDynamicValue(
+      (context) => {
+        return new GetProductsUseCase(
+          context.container.get<IOrdenRepository>("IOrdenRepository")
+        );
+      }
+    );
+
+    //order
+    bind<UseCase<IOrden.Params, boolean>>("OrderUseCase").toDynamicValue(
+      (context) => {
+        return new OrderUseCase(
+          context.container.get<IOrdenRepository>("IOrdenRepository")
+        );
+      }
+    );
   });
 
   return module;

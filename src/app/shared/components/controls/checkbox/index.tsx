@@ -2,7 +2,7 @@ import React, { ChangeEventHandler } from "react";
 import "./checkbox.css";
 
 type Props = {
-  isChecked: boolean;
+  isChecked?: boolean;
   name: string;
   label: string;
   onChange: ChangeEventHandler;

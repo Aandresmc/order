@@ -1,16 +1,15 @@
 import { PathUri } from "./path";
 
-const PORT = ':8443';
-const { REACT_APP_API_HOST_AWS } = process.env
+const PORT = "";
+const { REACT_APP_API_HOST } = process.env;
 
-
-const security: PathUri = {
-    baseUrl: REACT_APP_API_HOST_AWS,
-    port: PORT,
-    context: '/services',
-    service: '/security',
+const products: PathUri = {
+  baseUrl: REACT_APP_API_HOST,
+  port: PORT,
+  context: "/",
+  service: "products",
 };
 
 export const enviroments = {
-    security,
+  products,
 };

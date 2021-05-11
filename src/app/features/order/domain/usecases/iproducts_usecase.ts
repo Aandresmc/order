@@ -4,14 +4,14 @@ import { IOrden } from "../entities/iorder";
 import { IOrdenRepository } from "../repositories/iorder_repository";
 
 @injectable()
-export class OrderUseCase implements UseCase<IOrden.Params, boolean> {
+export class GetProductsUseCase implements UseCase<null, IOrden.Producto[]> {
   private readonly _repository: IOrdenRepository;
 
   constructor(repository: IOrdenRepository) {
     this._repository = repository;
   }
 
-  call(params: IOrden.Params): Promise<boolean> {
-    return this._repository.order(params);
+  call(): Promise<IOrden.Producto[]> {
+    return this._repository.getProducts();
   }
 }

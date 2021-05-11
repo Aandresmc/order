@@ -1,3 +1,3 @@
-export interface UseCase<T, R> {
-    call(params: T): Promise<R>;
+export interface UseCase<T = any, R = any> {
+  call(params?: T): Promise<R>;
 }

@@ -12,6 +12,11 @@ export const ProductsOrderComponent: React.FC<Props> = ({
   products,
   isLoading,
 }: Props) => {
+  const subTotal = () => {
+    const sum = products.reduce((a, b) => a + (parseInt(b.price) || 0), 0);
+    return sum;
+  };
+
   return (
     <Container>
       <Card>
@@ -21,7 +26,7 @@ export const ProductsOrderComponent: React.FC<Props> = ({
           </span>
         </BgGray>
         {products.map((product) => (
-          <ProductComponent product={product} />
+          <ProductComponent key={product.name} product={product} />
         ))}
         <div className="d-flex justify-content-end">
           <ButtonComponent label={"Editar"} isLoading={false} />
@@ -31,7 +36,9 @@ export const ProductsOrderComponent: React.FC<Props> = ({
             <span style={{ fontWeight: "bolder", margin: "4rem" }}>
               SUBTOTAL:
             </span>
-            <span style={{ fontWeight: "bolder", margin: "4rem" }}>$13,94</span>
+            <span style={{ fontWeight: "bolder", margin: "4rem" }}>
+              ${subTotal()}
+            </span>
           </div>
           <div className="flex-wrap">
             <span style={{ fontWeight: "bolder", margin: "4rem" }}>ENVIO:</span>
@@ -50,7 +57,7 @@ export const ProductsOrderComponent: React.FC<Props> = ({
             <span
               style={{ fontWeight: "bolder", margin: "4rem", color: "white" }}
             >
-              $13,94
+              ${subTotal()}
             </span>
           </div>
         </BgBlack>

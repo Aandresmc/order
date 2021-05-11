@@ -5,10 +5,11 @@ import styled from "styled-components";
 type Props = {
   isLoading: boolean;
   label: string;
+  type?: "submit" | "button";
 };
 
 const StyledButton = styled(({ ...props }) => (
-  <button {...props} data-testid="submit" type="submit">
+  <button {...props} data-testid="submit" type={props.type || "submit"}>
     {props.disabled ? "Cargando..." : props.label}
   </button>
 ))`
@@ -20,9 +21,11 @@ const StyledButton = styled(({ ...props }) => (
   padding-inline: 1.5rem;
   background-color: black;
   color: white;
+  border: none;
 `;
 
 export const ButtonSubmitComponent: React.FC<Props> = ({
   isLoading,
   label,
-}: Props) => <StyledButton disabled={isLoading} label={label} />;
+  type,
+}: Props) => <StyledButton disabled={isLoading} label={label} type={type} />;

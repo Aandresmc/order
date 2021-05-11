@@ -10,16 +10,16 @@ export const ProductComponent: React.FC<Props> = ({ product }: Props) => {
     <ContentBorder>
       <div
         style={{ width: "100%" }}
-        className="d-flex flex-wrap justify-content-center"
+        className="d-flex justify-content-center"
       >
         <img
-          style={{ margin: "1rem", width: "120px" }}
-          src={product.imagen}
-          alt={product.nombre}
+          style={{ margin: "1rem", width: "85px" }}
+          src={product.image}
+          alt={product.name}
         />
-        <p style={{ width: "55%", color: "darkgray" }}>{product.nombre}</p>
-        <b style={{ fontWeight: "bolder", marginTop: "15px" }}>
-          ${product.precio}
+        <p style={{ color: "darkgray" }}>{product.name}</p>
+        <b style={{ fontWeight: "bolder", marginTop: "15px", marginInline:"15px" }}>
+          ${product.price}
         </b>
       </div>
     </ContentBorder>
